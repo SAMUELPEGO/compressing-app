@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <title>Compress tool</title>
+  </head>
+
+  <body class="bg-light">
+    {% include "navbar.njk" %}
+    <main>
+      <section
+        class="drop-container w-100 custom-border-dashed bg-warning text-center rounded py-5 container mt-5 mx-auto shadow"
+      >
+        <img src="bootstrap-icons/icons/cloud-upload-fill.svg" alt="" width="100" height="100"/>
+        <p>Arrastra y suelta los archivos aqui</p>
+        <form>
+          <input class="d-none" type="file" id="inputFile" multiple accept=".jpg, .jpeg, .png, .webp, .gif, .bmp, .tiff" />
+          <label class="" for="inputFile"
+            ><p
+              class="border border-secondary px-3 py-2 text-secondary rounded"
+            >
+              Seleccionar archivos
+            </p>
+            <p>Solo se aceptan archivos .jpg, .jpeg, .png, .webp, .gif, .bmp, .tiff</p>
+          </label>
+        </form>
+      </section>
+      <section class="uploadedFiles-container mt-5">
+        <h3 class="text-center">Archivos a comprimir</h3>
+        <table class="table container">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">nombre</th>
+              <th scope="col">tamaño</th>
+              <th scope="col">estado</th>
+            </tr>
+          </thead>
+          <tbody class="files-container">
+          </tbody>
+        </table>
+        <h3 class="text-center">Archivos comprimidos</h3>
+        <table class="table container">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">nombre</th>
+              <th scope="col">tamaño</th>
+              <th scope="col">descargar</th>
+            </tr>
+          </thead>
+          <tbody class="filesCompressed-container">
+          </tbody>
+        </table>
+        <div class="container">
+          <button type="button" class="btn btn-success btn-upload disabled">Preparar para descargar todos</button>           <a  type="button" class="btn btn-success btn-uploadAll invisible">Descargar todos</a>        </section>
+        </section>
+      <section class="container customs-container my-5 bg-white">
+        <div>
+          <p>Convertir a:</p>
+          <select
+            class="form-select form-select-lg mb-3 custom-border-dashed" id="inputSelect"
+            aria-label=".form-select-lg example"
+          >
+            <option value="jpeg">JPEG</option>
+            <option value="png">PNG</option>
+          </select>
+        </div>
+        <div class="bg-warning p-3 rounded">
+          <label for="inputQuality" class="form-label">Calidad:</label>
+          <input type="range" min="0" max="100" step="20" class="form-range" id="inputQuality" />
+          <div class="d-flex justify-content-between">
+            <span>0%</span>
+            <span>20%</span>
+            <span>40%</span>
+            <span>60%</span>
+            <span>80%</span>
+            <span>100%</span>
+          </div>
+        </div>
+      
+      </section>
+    </main>
+    <script type="module" src="dist/js/bootstrap.bundle.js"></script>
+    <script type="module" src="scripts/index/uploadHandler.js"></script>
+  </body>
+</html>
