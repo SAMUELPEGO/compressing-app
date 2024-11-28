@@ -12,12 +12,12 @@ export async function handleInputFile(e) {
   try {
     for (let file = 0; file < files.length; file++) {
       formData.append("files[]", files[file]);
-      const fileSizeInKiB = (files[file].size / 1024).toFixed(2); 
+      const fileSizeInKiB = (files[file].size / 1024).toFixed(2);
       const fileSizeInMiB = (files[file].size / (1024 * 1024)).toFixed(2);
       container.innerHTML += `<tr>
         <th scope="row">${parseInt(file) + 1}</th>
         <td>${files[file].name}</td>
-        <td class="size">${fileSizeInKiB >= 1024 ? fileSizeInMiB +" mg" : fileSizeInKiB + " kb"  }</td>
+        <td class="size">${fileSizeInKiB >= 1024 ? fileSizeInMiB + " mg" : fileSizeInKiB + " kb"}</td>
         <td class="state">subiendo...</td>
       </tr>`;
     }
@@ -47,11 +47,11 @@ export async function handleInputFile(e) {
       for (let file in res) {
         conprimedFiles.innerHTML += `<tr>
         <th scope="row">${parseInt(file) + 1}</th>
-        <td>${res[file]}</td>
-        <td>${0}</td>
-        <td class="btn-download"><a href="filesCompressed/${
-          res[file]
-        }" download>download</a></td>
+        <td>${res[file].name}</td>
+          <td>${parseInt(res[file].size) < 1024 ? res[file].size : (parseInt(res[file].size) / 1024).toFixed(2)}</td>
+
+        <td class="btn-download"><a href="filesCompressed/${res[file].name
+          }" download>download</a></td>
       </tr>`;
       }
     }

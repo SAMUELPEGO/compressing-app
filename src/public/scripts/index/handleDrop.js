@@ -61,9 +61,9 @@ export async function handleDrop(e) {
       for (let file in res) {
         conprimedFiles.innerHTML += `<tr>
         <th scope="row">${parseInt(file) + 1}</th>
-        <td>${res[file]}</td>
-         <td>${0}</td>
-        <td class="btn-download"><a href="filesCompressed/${res[file]
+        <td>${res[file].name}</td>
+         <td>${parseInt(res[file].size) < 1024 ? res[file].size : (parseInt(res[file].size) / 1024).toFixed(2)}</td>
+        <td class="btn-download"><a href="filesCompressed/${res[file].name
           }" download>download</a></td>
       </tr>`;
       }
