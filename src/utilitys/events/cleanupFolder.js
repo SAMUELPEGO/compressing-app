@@ -11,4 +11,5 @@ export const cleanupEvent = customEmitter.on("cleanupFolder", async () => {
     console.log(file);
     await fs.unlink(join(folderPath, file));
   });
+
 });
